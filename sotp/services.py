@@ -2,6 +2,7 @@ import pyotp
 
 # Django Imports
 from django.conf import settings
+from sotp.models import UserSOTP
 
 
 class GenerateSOTP:
@@ -10,9 +11,9 @@ class GenerateSOTP:
     """
     
     @staticmethod
-    def generate_otp():
+    def generate_otp(request):
         # Generate a random string of 32 characters
-        secret = pyotp.random_base32(length=6)    
+        secret = pyotp.random_base32()    
         
         # Parse the secret to an OTP and set an interval of 86400 ms 
         totp = pyotp.TOTP(secret, interval=settings.SOTP_MILLI_SECONDS)
@@ -25,5 +26,11 @@ class GenerateSOTP:
             "totp": secret,
             "OTP": OTP
         }
+        
+        # Add generated TOTP and OTP to user and save to database
+        user_sotp = UserSOTP.objects.get(id=request.user.id)
+        user_sotp.totp = payload["totp"]
+        user_sotp.otp = payload["OTP"]
+        user_sotp.save()
         
         return payload
