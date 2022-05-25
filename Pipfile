@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 django = "*"
 rest-api-payload = "*"
+pyotp = "*"
 
 [dev-packages]
 
