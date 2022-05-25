@@ -1,3 +1,3 @@
-# getOTP 🔐
+# getSOTP 🔐
 
-Get a one time password to authenticate your user! 
+Get a secured one time password to authenticate your user! 
