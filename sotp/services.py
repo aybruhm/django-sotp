@@ -12,7 +12,7 @@ class GenerateSOTP:
     @staticmethod
     def generate_otp():
         # Generate a random string of 32 characters
-        secret = pyotp.random_base32()    
+        secret = pyotp.random_base32(length=6)    
         
         # Parse the secret to an OTP and set an interval of 86400 ms 
         totp = pyotp.TOTP(secret, interval=settings.SOTP_MILLI_SECONDS)
