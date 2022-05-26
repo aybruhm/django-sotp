@@ -10,7 +10,7 @@ class UserSOTP(User):
     totp = models.CharField(max_length=18, unique=True, null=True, blank=True)
     otp = models.IntegerField(null=True, blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
-    date_modified = models.DateTimeField(auto_now=False)
+    date_modified = models.DateTimeField(auto_now=False, null=True, blank=True)
     
     def __str__(self):
         return "totp: {}, otp: {}".format(self.totp, self.otp)
