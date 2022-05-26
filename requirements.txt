@@ -1,6 +1,13 @@
+APScheduler==3.9.1
 asgiref==3.5.2
 backports.zoneinfo==0.2.1
 Django==4.0.4
+django-apscheduler==0.6.2
 pyotp==2.6.0
+pytz==2022.1
+pytz-deprecation-shim==0.1.0.post0
 rest-api-payload==0.0.5
+six==1.16.0
 sqlparse==0.4.2
+tzdata==2022.1
+tzlocal==4.2
