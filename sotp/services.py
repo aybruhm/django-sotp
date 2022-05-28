@@ -11,7 +11,7 @@ class GenerateSOTP:
     """
     
     @staticmethod
-    def generate_otp(request):
+    def generate_otp(user_id:int):
         # Generate a random string of 32 characters
         secret = pyotp.random_base32()    
         
@@ -28,7 +28,7 @@ class GenerateSOTP:
         }
         
         # Add generated TOTP and OTP to user and save to database
-        user_sotp = UserSOTP.objects.get(id=request.user.id)
+        user_sotp = UserSOTP.objects.get(id=user_id)
         user_sotp.totp = payload["totp"]
         user_sotp.otp = payload["OTP"]
         user_sotp.save()

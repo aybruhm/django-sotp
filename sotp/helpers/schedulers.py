@@ -24,7 +24,7 @@ def run_scheduler(user:User):
         remove_user_sotps, 
         'interval', minutes=15,
         jobstore='default',
-        id="{}_totp_{}_otp_{}".format(user.username, user.totp, user.otp),
+        id="#{}_totp_{}_otp_{}".format(user.id, user.totp, user.otp),
     )
 
     # Start scheduler
