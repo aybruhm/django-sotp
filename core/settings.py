@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django_sotp',
     'djangorest_sotp',
     'sotp',
+    
+    'django_apscheduler',
 ]
 
 MIDDLEWARE = [
