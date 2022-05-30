@@ -38,8 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
-    'django_sotp',
-    'djangorest_sotp',
+    'example',
     'sotp',
     
     'django_apscheduler',
