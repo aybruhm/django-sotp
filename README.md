@@ -1,3 +1,3 @@
 # Django SOTP 🔐
 
-Get a secured one time password to authenticate your user! 
+Generate a secured base32 one time password to authenticate your user!
