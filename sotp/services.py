@@ -1,13 +1,18 @@
+from django.http import HttpRequest
 import pyotp
 
 # Django Imports
 from django.conf import settings
+
+# Apps Imports
+from sotp.helpers.schedulers import run_scheduler
 from sotp.models import UserSOTP
 
 
 class GenerateSOTP:
     """
-    This class generates a random base32 string and uses it to generate a one time password
+    This class generates a random base32 string 
+    and uses it to generate a one time password
     """
     
     @staticmethod
@@ -33,4 +38,8 @@ class GenerateSOTP:
         user_sotp.otp = payload["OTP"]
         user_sotp.save()
         
+        # Run scheduler to clear user *OTP after interval has elapsed
+        run_scheduler(user_id=user_id)
+        
         return payload
+    
