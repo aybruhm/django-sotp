@@ -37,7 +37,9 @@ INSTALLED_APPS = [
 
 Now you've done it, all you need to do is add the time which you want your OTPs to expire:
 
-```SOTP_TIME_EXPIRATION = 15 # in minutes```
+```
+SOTP_TIME_EXPIRATION = 15 # in minutes
+```
 
 Yesss. That's all of it? Of course, not! Don't forget to make migrations and migrate to your database and you're good to go!!
 
