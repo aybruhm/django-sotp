@@ -20,8 +20,8 @@ class GenerateSOTP:
         # Generate a random string of 32 characters
         secret = pyotp.random_base32()    
         
-        # Parse the secret to an OTP and set an interval of 86400 ms 
-        totp = pyotp.TOTP(secret, interval=settings.SOTP_MILLI_SECONDS)
+        # Parse the secret to an OTP and set an interval of 900 seconds 
+        totp = pyotp.TOTP(secret, interval=settings.SOTP_TIME_EXPIRATION * 60)
         
         # Generate the OTP
         OTP = totp.now()
