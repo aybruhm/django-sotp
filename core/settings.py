@@ -129,4 +129,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # SOTP configuration
-SOTP_MILLI_SECONDS = 960000 # 15 minutes
+SOTP_TIME_EXPIRATION = 15 # in minutes
