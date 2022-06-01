@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="POST">
+
+  <!-- OTP input -->
+  <div class="form-outline mb-4">
+    <input type="number" id="form2Example1" class="form-control" />
+    <label class="form-label" for="form2Example1">OTP</label>
+  </div>
+
+  <!-- Submit button -->
+  <button type="submit" class="btn btn-primary btn-block mb-4">Confirm OTP</button>
+
+  <!-- Register buttons -->
+  <div class="text-center">
+    <p>Not a member? <a href="#!">Register</a></p>
+  </div>
+</form>
+{% endblock content %}
