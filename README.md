@@ -55,4 +55,4 @@ Congratulations, buddy! You're all set! Let's jump right into how to start using
 
 <br />
 
-## Shell Example 🥁
+## Shell Example 🥁 
