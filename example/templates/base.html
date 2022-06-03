@@ -1,16 +1,33 @@
+<!DOCTYPE html>
 <html lang="en">
+<!--begin::Head-->
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django SOTP - Secured One Time Password</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Django SOTP - Secured One Time Password" />
 
-    <!-- MDBoostrap CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.20.0/css/mdb.min.css"
-        integrity="sha512-hj9rznBPdFg9A4fACbJcp4ttzdinMDtPrtZ3gBD11DiY3O1xJfn0r1U5so/J0zwfGOzq9teIaH5rFmjFAFw8SA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--begin::Fonts-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+    <!--end::Fonts-->
 
-    <title>Django SOTP</title>
+    <!-- begin::Font Awesome JavaScript Kit -->
+    <script src="https://kit.fontawesome.com/6e47be172b.js" crossorigin="anonymous"></script>
+    <!-- end::Font Awesome JavaScript Kit -->
+
+    <!--begin::Global Stylesheets Bundle(used by all pages)-->
+    <link href="{% static 'css/plugin.bundle.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'css/style.bundle.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'css/custom.css' %}" rel="stylesheet" type="text/css" />
+    <!--end::Global Stylesheets Bundle-->
+
 </head>
+<!--end::Head-->
 <body>
 
     <div class="container mt-5">
@@ -19,13 +36,9 @@
         {% endblock content %}
     </div>
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-    <!-- MDBoostrap JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.20.0/js/mdb.min.js"
-        integrity="sha512-XFd1m0eHgU1F05yOmuzEklFHtiacLVbtdBufAyZwFR0zfcq7vc6iJuxerGPyVFOXlPGgM8Uhem9gwzMI8SJ5uw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--begin::Global Javascript Bundle(used by all pages)-->
+    <script src="{% static 'js/plugins.bundle.js' %}"></script>
+    <script src="{% static 'js/scripts.bundle.js' %}"></script>
+    <!--end::Global Javascript Bundle-->
 </body>
 </html>
