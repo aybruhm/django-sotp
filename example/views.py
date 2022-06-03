@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth import get_user_model, authenticate, login
+from django.contrib.auth.decorators import login_required
 
 # Sotp Imports
 from sotp.models import UserSOTP
@@ -40,24 +41,29 @@ def register_page(request):
 
 def login_page(request):
     
-    if request.method == "POST":
-        username = request.POST.get("username")
-        password = request.POST.get("password")
-        
-        # Validate the user credentials
-        user = authenticate(username=username, password=password)
-        
-        # Log the user in :
-        # - if the user is exists 
-        # - redirect back to the login page if the user doesn't
-        if user is not None:
-            login(request, user)
-            return redirect("welcome-page")
-        
-        else:
-            return redirect("login-page")
+    if request.user.is_authenticated:
+        return redirect("example:welcome-page")
     
-    return render(request, "example/login.html")
+    else:
+    
+        if request.method == "POST":
+            username = request.POST.get("username")
+            password = request.POST.get("password")
+            
+            # Validate the user credentials
+            user = authenticate(username=username, password=password)
+            
+            # Log the user in :
+            # - if the user is exists 
+            # - redirect back to the login page if the user doesn't
+            if user is not None:
+                login(request, user)
+                return redirect("welcome-page")
+            
+            else:
+                return redirect("login-page")
+        
+        return render(request, "example/login.html")
 
 
 def confirm_otp_page(request):
@@ -85,6 +91,7 @@ def confirm_otp_page(request):
     return render(request, "example/confirm-otp.html")    
 
 
+@login_required(login_url="/login/")
 def welcome_page(request):
     user = User.objects.get(id=request.user.id)
     return render(request, "example/welcome.html", {"username": user.username})
