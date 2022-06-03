@@ -10,6 +10,10 @@ User = get_user_model()
 generate_otp = GenerateSOTP()
 
 
+def redirect_to_register_page(request):
+    return redirect("example:register-page")
+
+
 def register_page(request):
     
     if request.method == "POST":
