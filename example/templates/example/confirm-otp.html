@@ -1,20 +1,70 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form method="POST">
-
-  <!-- OTP input -->
-  <div class="form-outline mb-4">
-    <input type="number" id="form2Example1" class="form-control" />
-    <label class="form-label" for="form2Example1">OTP</label>
+  <!--begin::Root-->
+  <div class="d-flex flex-column flex-root">
+    <!--begin::Authentication - Sign-in -->
+    <div class="d-flex flex-column flex-column-fluid bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed" style="background-image: url(/metronic8/demo1/assets/media/illustrations/sketchy-1/14.png">
+      <!--begin::Content-->
+      <div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
+        <!--begin::Logo-->
+        <a href="https://github.com/israelabraham/django-sotp" class="mb-12">
+          Django - Secured One Time Password
+        </a>
+        <!--end::Logo-->
+        <!--begin::Wrapper-->
+        <div class="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
+          <!--begin::Form-->
+          <form class="form w-100" novalidate="novalidate" id="kt_sign_in_form" data-kt-redirect-url="/metronic8/demo1/../demo1/index.html" action="#">
+            <!--begin::Heading-->
+            <div class="text-center mb-10">
+              <!--begin::Title-->
+              <h1 class="text-dark mb-3">Confirm OTP</h1>
+              <!--end::Title-->
+              <!--begin::Link-->
+              <div class="text-gray-400 fw-bold fs-4">Already have an account?
+              <a href="{% url 'example:login-page' %}" class="link-primary fw-bolder">Login</a></div>
+              <!--end::Link-->
+            </div>
+            <!--begin::Heading-->
+            <!--begin::Input group-->
+            <div class="fv-row mb-10">
+              <!--begin::Label-->
+              <label class="form-label fs-6 fw-bolder text-dark">OTP</label>
+              <!--end::Label-->
+              <!--begin::Input-->
+              <input class="form-control form-control-lg form-control-solid" type="text" name="username" autocomplete="off" />
+              <!--end::Input-->
+            </div>
+            <!--end::Input group-->
+            <!--begin::Actions-->
+            <div class="text-center">
+              <!--begin::Submit button-->
+              <button type="submit" id="kt_sign_in_submit" class="btn btn-lg btn-primary w-100 mb-5">
+                <span class="indicator-label">Continue</span>
+                <span class="indicator-progress">Please wait... 
+                <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+              </button>
+              <!--end::Submit button-->
+            </div>
+            <!--end::Actions-->
+          </form>
+          <!--end::Form-->
+        </div>
+        <!--end::Wrapper-->
+      </div>
+      <!--end::Content-->
+      <!--begin::Footer-->
+      <div class="d-flex flex-center flex-column-auto p-10">
+        <!--begin::Links-->
+        <div class="d-flex align-items-center fw-bold fs-6">
+          <a href="https://github.com/israelabraham" class="text-muted text-hover-primary px-2">Author</a>
+        </div>
+        <!--end::Links-->
+      </div>
+      <!--end::Footer-->
+    </div>
+    <!--end::Authentication - Sign-in-->
   </div>
-
-  <!-- Submit button -->
-  <button type="submit" class="btn btn-primary btn-block mb-4">Confirm OTP</button>
-
-  <!-- Register buttons -->
-  <div class="text-center">
-    <p>Not a member? <a href="#!">Register</a></p>
-  </div>
-</form>
+  <!--end::Root-->
 {% endblock content %}
