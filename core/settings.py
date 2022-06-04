@@ -127,6 +127,8 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# EMAIL Configuration
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # SOTP configuration
 SOTP_TIME_EXPIRATION = 15 # in minutes
