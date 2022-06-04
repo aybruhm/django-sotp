@@ -98,3 +98,8 @@ def confirm_otp_page(request):
 def welcome_page(request):
     user = User.objects.get(id=request.user.id)
     return render(request, "example/welcome.html", {"username": user.username})
+
+
+@login_required(login_url="/login/")
+def logout_user(request):
+    pass
