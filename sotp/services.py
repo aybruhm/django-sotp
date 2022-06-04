@@ -1,7 +1,8 @@
-from django.http import HttpRequest
+# Library Imports
 import pyotp
 
 # Django Imports
+from django.core.mail import send_mail
 from django.conf import settings
 
 # Apps Imports
@@ -15,8 +16,8 @@ class GenerateSOTP:
     and uses it to generate a one time password
     """
     
-    @staticmethod
-    def generate_otp(user_id:int):
+    @classmethod
+    def generate_otp(self, user_email:str):
         # Generate a random string of 32 characters
         secret = pyotp.random_base32()    
         
@@ -33,13 +34,42 @@ class GenerateSOTP:
         }
         
         # Add generated TOTP and OTP to user and save to database
-        user_sotp = UserSOTP.objects.get(id=user_id)
+        user_sotp = UserSOTP.objects.get(email=user_email)
         user_sotp.totp = payload["totp"]
         user_sotp.otp = payload["OTP"]
         user_sotp.save()
         
+        # Send email to user
+        self.send_otp_email(
+            otp_code=user_sotp.otp,
+            user_email=user_email
+        )
+        
         # Run scheduler to clear user *OTP after interval has elapsed
-        run_scheduler(user_id=user_id)
+        run_scheduler(user_email=user_email)
         
         return payload
+   
+   
+    @classmethod
+    def send_otp_email(self, otp_code:int, user_email:str):
+        """
+        > Send an email to the user with the OTP code
+        
+        :param otp_code: The OTP code that was generated for the user
+        :type otp_code: int
+        :param user_email: The email address of the user
+        :type user_email: str
+        :return: True
+        """
+        
+        send_mail(
+            'Confirm OTP',
+            'Use this secured OTP to authenticate your account\nOTP: {}'.format(otp_code),
+            'noreply@abram.tech',
+            [user_email],
+            fail_silently=False,
+        )
+        
+        return True
     
