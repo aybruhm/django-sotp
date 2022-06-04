@@ -8,7 +8,7 @@ from sotp.services import GenerateSOTP
 
 
 User = get_user_model()
-generate_otp = GenerateSOTP()
+otp = GenerateSOTP()
 
 
 def redirect_to_register_page(request):
@@ -20,21 +20,22 @@ def register_page(request):
     if request.method == "POST":
         firstname = request.POST.get("firstname")
         lastname = request.POST.get("lastname")
+        username = request.POST.get("username")
         email = request.POST.get("email")
         password = request.POST.get("password")
         
         # Creates user and save to database
         user = User.objects.create(
-            firstname=firstname, lastname=lastname,
-            email=email, password=password
+            first_name=firstname, last_name=lastname,
+            username=username, email=email, password=password
         )
         user.set_password(password)
         user.save()
         
         # Generate otp code for user
-        generate_otp(user_id=user.id)
+        otp.generate_otp(user_email=user.email)
         
-        return redirect("login-page")
+        return redirect("example:confirm-otp-page")
     
     return render(request, "example/sign-up.html")
 
@@ -70,20 +71,20 @@ def confirm_otp_page(request):
     
     if request.method == "POST":
         otp = request.POST.get("otp-code")
-        email = request.POST.get("email")
+        email = request.POST.get("email") 
         
         # Get user
         user = User.objects.get(email=email)
+        user_otp = UserSOTP.objects.get(user=user)
         
         # Validate the user otp
-        if otp == UserSOTP.objects.get(user=user).otp:
-        
-            # Log the user in :
-            # - if the user is exists 
-            # - redirect back to the login page if the user doesn't
-            if user is not None:
-                login(request, user)
-                return redirect("welcome-page")
+        if otp == user_otp.otp:
+            
+            # Set the user verification to True
+            user_otp.verified = True
+            user_otp.save()
+            
+            return redirect("example:login-page")
         
         else:
             return redirect("confirm-otp-page")
