@@ -4,6 +4,7 @@ import pyotp
 # Django Imports
 from django.core.mail import send_mail
 from django.conf import settings
+from django.contrib.auth import get_user_model
 
 # Apps Imports
 from sotp.helpers.schedulers import run_scheduler
@@ -34,14 +35,14 @@ class GenerateSOTP:
         }
         
         # Add generated TOTP and OTP to user and save to database
-        user_sotp = UserSOTP.objects.get(email=user_email)
-        user_sotp.totp = payload["totp"]
-        user_sotp.otp = payload["OTP"]
-        user_sotp.save()
+        user_sotp = UserSOTP.objects.get_or_create(
+            user=get_user_model().objects.get(email=user_email),
+            totp = payload.get("totp"), otp = payload.get("OTP")
+        )
         
         # Send email to user
         self.send_otp_email(
-            otp_code=user_sotp.otp,
+            otp_code=user_sotp[0].otp,
             user_email=user_email
         )
         
