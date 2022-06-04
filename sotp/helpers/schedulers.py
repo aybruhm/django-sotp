@@ -17,7 +17,7 @@ from sotp.helpers.remove_otps import remove_user_otp
 User = get_user_model()
 
 
-def run_scheduler(user_id:int):
+def run_scheduler(user_email:str):
     scheduler = BackgroundScheduler()
     scheduler.add_jobstore(DjangoJobStore(), "default")
     
@@ -26,7 +26,7 @@ def run_scheduler(user_id:int):
         remove_user_otp, 
         'interval', minutes=settings.SOTP_TIME_EXPIRATION,
         jobstore='default',
-        id="#{}-{}_remove_elapsed_otps".format(user_id, random.randint(00000000, 9000000)),
+        id="#{}-{}_remove_elapsed_otps".format(user_email, random.randint(00000000, 9000000)),
     )
 
     # Start scheduler
