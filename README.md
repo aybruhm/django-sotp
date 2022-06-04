@@ -7,12 +7,16 @@ Generate a secured base32 one time password to authenticate your user!
 
 ## Case Study 📑
 
-Before I tell you one reason why you should use django-sotp in your next project, have you every had to build from scratch every time a layer of your authentication system?
+Before I mention why you should use django-sotp in your next project, have you every had to build from scratch; every time, a layer of your authentication system?
 
-- stupidly secured and simple to integrate
-- clears out OTPs at elapsed time
+Ah, yesss - me too, I know the feeling. With django-sotp, you won't have to worry about figuring out how to build that layer of your authentication infrastructure. That's right, this package does everything you'd need, or not.
 
-That's right, you don't have to worry about making the last reason asynchronous, it's been done for you. All you need to do is figured out how to implement it onto your system.
+Django SOTP does just two things, and it does them really well.
+
+- One - it is stupidly secured and simple to integrate
+- Two - it clears out OTPs at elapsed time
+
+Damn yes, you saw right! You don't have to worry about making the last reason asynchronous, it's been done for you. All you need to do is figured out how to implement it onto your system. Super cool, yes? I knowwwwww.
 
 <br />
 
