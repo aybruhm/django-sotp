@@ -16,6 +16,8 @@
         <div class="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
           <!--begin::Form-->
           <form class="form w-100" novalidate="novalidate" method="POST" id="kt_sign_in_form">
+            {% csrf_token %}
+
             <!--begin::Heading-->
             <div class="text-center mb-10">
               <!--begin::Title-->
@@ -27,6 +29,14 @@
               <!--end::Link-->
             </div>
             <!--begin::Heading-->
+
+            {% if messages %}
+            <ul class="messages" style="list-style: none; padding-left: 0% !important;">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
             
             <!--begin::Input group-->
             <div class="fv-row mb-10">
@@ -45,7 +55,7 @@
               <label class="form-label fs-6 fw-bolder text-dark">OTP</label>
               <!--end::Label-->
               <!--begin::Input-->
-              <input class="form-control form-control-lg form-control-solid" type="text" name="username" autocomplete="off" />
+              <input class="form-control form-control-lg form-control-solid" type="text" name="otp-code" autocomplete="off" />
               <!--end::Input-->
             </div>
             <!--end::Input group-->
