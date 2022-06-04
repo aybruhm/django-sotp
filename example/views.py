@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth import get_user_model, authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 # Sotp Imports
 from sotp.models import UserSOTP
@@ -78,7 +79,7 @@ def confirm_otp_page(request):
         user_otp = UserSOTP.objects.get(user=user)
         
         # Validate the user otp
-        if otp == user_otp.otp:
+        if int(otp) == user_otp.otp:
             
             # Set the user verification to True
             user_otp.verified = True
@@ -87,7 +88,8 @@ def confirm_otp_page(request):
             return redirect("example:login-page")
         
         else:
-            return redirect("confirm-otp-page")
+            messages.warning(request, "OTP has expired. Please try again.")
+            return redirect("example:confirm-otp-page")
 
     return render(request, "example/confirm-otp.html")    
 
