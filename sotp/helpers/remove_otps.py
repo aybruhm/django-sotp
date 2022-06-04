@@ -18,7 +18,7 @@ def remove_user_otp(request:HttpRequest):
     :type user: User
     :return: True
     """
-    user_sotp = UserSOTP.objects.get(id=request.user.id)
+    user_sotp = UserSOTP.objects.get(email=request.user.email)
     user_sotp.totp = 0
     user_sotp.otp = 0
     user_sotp.save()
