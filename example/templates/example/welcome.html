@@ -14,9 +14,13 @@
               <!--end::Logo-->
               <!--begin::Wrapper-->
               <div class="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
-                  <h2 class="text-center text-dark justify-content-center w-100 mx-auto">
-                      Welcome, {{ username }}!
-                  </h2>
+                    <h2 class="text-center text-dark justify-content-center w-100 mx-auto mb-5">
+                        Welcome, {{ username }}!
+                    </h2>
+
+                    <a href="{% url 'example:logout_user' %}" class="btn btn-lg btn-primary w-100">
+                        Logout
+                    </a>
               </div>
               <!--end::Wrapper-->
           </div>
