@@ -95,10 +95,11 @@ def confirm_otp_page(request):
                 user_otp.verified = True
                 user_otp.save()
                 
+                messages.success(request, "Your account has been verified!")
                 return redirect("example:login-page")
             
             else:
-                messages.warning(request, "OTP has expired. Please try again.")
+                messages.warning(request, "OTP isn't correct. Please try again.")
                 return redirect("example:confirm-otp-page")
 
         return render(request, "example/confirm-otp.html")    
