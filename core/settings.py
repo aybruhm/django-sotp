@@ -156,4 +156,4 @@ APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"
 APSCHEDULER_RUN_NOW_TIMEOUT = 25  # Second
 
 # SOTP configuration
-SOTP_TIME_EXPIRATION = 15 # in minutes
+SOTP_TIME_EXPIRATION = 1 # in minutes
