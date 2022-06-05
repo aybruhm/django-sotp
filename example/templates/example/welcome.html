@@ -14,6 +14,15 @@
               <!--end::Logo-->
               <!--begin::Wrapper-->
               <div class="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
+
+                    {% if messages %}
+                    <ul class="messages" style="list-style: none; padding-left: 0% !important;">
+                        {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+
                     <h2 class="text-center text-dark justify-content-center w-100 mx-auto mb-5">
                         Welcome, {{ username }}!
                     </h2>
