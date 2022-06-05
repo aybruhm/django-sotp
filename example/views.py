@@ -65,10 +65,10 @@ def login_page(request):
             # - redirect back to the login page if the user doesn't
             if user is not None:
                 login(request, user)
-                return redirect("welcome-page")
+                return redirect("example:welcome-page")
             
             else:
-                return redirect("login-page")
+                return redirect("example:login-page")
         
         return render(request, "example/login.html")
 
@@ -112,5 +112,5 @@ def welcome_page(request):
 
 @login_required(login_url="/login/")
 def logout_user(request):
-    logout(request, request.user)
+    logout(request)
     return redirect("example:login-page")
