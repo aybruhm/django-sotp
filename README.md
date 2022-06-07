@@ -92,7 +92,7 @@ Try to test out this baby on your shell? Let's go then!
  ``` 
  - Step 3: Call the generate_otp method, don't forget to add a user email address:
   ```
-  otp.generate_otp(user_email="test@abram.tech")
+  otp.generate_otp(user_email="test@email.com")
   ```
  - Step 4: Token and OTP is generated, sent to user via email, and saved to database. 
  ```
