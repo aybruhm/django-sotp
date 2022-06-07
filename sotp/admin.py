@@ -4,4 +4,6 @@ from sotp.models import UserSOTP
 
 @admin.register(UserSOTP)
 class UserSOTPAdmin(admin.ModelAdmin):
-    fields = ("user", "totp", "otp",)
+    list_display = ("user", "totp", "otp",)
+    
+    
