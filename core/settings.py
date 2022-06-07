@@ -155,5 +155,5 @@ APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"
 # etc. See: https://djangopackages.org/grids/g/workers-queues-tasks/ for popular options).
 APSCHEDULER_RUN_NOW_TIMEOUT = 25  # Second
 
-# SOTP configuration
+# SOTP configuration    
 SOTP_TIME_EXPIRATION = 5 # in minutes
