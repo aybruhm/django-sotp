@@ -16,7 +16,7 @@ Django SOTP does just two things, and it does them really well.
 - One - it is stupidly secured and simple to integrate
 - Two - it clears out OTPs at elapsed time
 
-Damn yes, you saw right! You don't have to worry about making the last reason asynchronous, it's been done for you. All you need to do is figured out how to implement it onto your system. Super cool, yes? I knowwwwww.
+Damn yes, you saw right! You don't have to worry about making the last reason happen, it's been done for you. All you need to do is figure out how to implement it onto your system. Super cool, yes? I knowwwwww.
 
 <br />
 
