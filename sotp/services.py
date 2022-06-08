@@ -53,7 +53,7 @@ class GenerateSOTP:
    
    
     @classmethod
-    def send_otp_email(self, otp_code:int, user_email:str):
+    def send_otp_email(self, otp_code:int, user_email:str,from_email:str):
         """
         > Send an email to the user with the OTP code
         
@@ -67,7 +67,7 @@ class GenerateSOTP:
         send_mail(
             'Confirm OTP',
             'Use this secured OTP to authenticate your account\nOTP: {}'.format(otp_code),
-            'noreply@abram.tech',
+            settings.SOTP_FROM_EMAIL,
             [user_email],
             fail_silently=False,
         )
