@@ -45,6 +45,12 @@ Now you've done it, all you need to do is add the time which you want your OTPs 
 SOTP_TIME_EXPIRATION = 5 # in minutes
 ```
 
+Now, you set the email address that you want to use to send emails to your user(s):
+
+```
+SOTP_FROM_EMAIL = "from@email.com" # replace the email
+```
+
 Yesss. That's all of it? Of course, not! Don't forget to make migrations and migrate to your database and you're good to go!!
 
 ```
