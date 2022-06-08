@@ -67,7 +67,7 @@ class GenerateSOTP:
         send_mail(
             'Confirm OTP',
             'Use this secured OTP to authenticate your account\nOTP: {}'.format(otp_code),
-            'noreply@abram.tech',
+            settings.SOTP_FROM_EMAIL,
             [user_email],
             fail_silently=False,
         )

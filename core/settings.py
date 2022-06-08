@@ -157,3 +157,5 @@ APSCHEDULER_RUN_NOW_TIMEOUT = 25  # Second
 
 # SOTP configuration    
 SOTP_TIME_EXPIRATION = 5 # in minutes
+
+SOTP_FROM_EMAIL = "from@email.com" 
