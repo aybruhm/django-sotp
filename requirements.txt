@@ -1,7 +1,7 @@
 APScheduler==3.9.1
 asgiref==3.5.2
 backports.zoneinfo==0.2.1
-Django==4.0.4
+Django==4.0.6
 django-apscheduler==0.6.2
 pyotp==2.6.0
 pytz==2022.1
