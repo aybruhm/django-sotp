@@ -10,7 +10,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
  
 setup(
     name = 'django_sotp',
-    version = '1.0.2',
+    version = '1.0.3',
     packages = find_packages(),
     include_package_data = True,
     license = 'CC0 1.0 Universal (CC0 1.0) Public Domain Dedication',
@@ -51,5 +51,6 @@ setup(
     install_requires=[
         "django>=2.2",
         "django-apscheduler",
+        "pyotp",
     ],
 )
