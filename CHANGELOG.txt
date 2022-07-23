@@ -10,3 +10,9 @@ Change Log
 - Include SOTP_FROM_EMAIL option to change default "from_email" address
 - Bump version from 1.0.1 to 1.0.2
 - Update REAME.md file
+
+1.0.3 (23/07/2022)
+-------------------
+- Include pyotp to install_requires
+- Bump version from 1.0.2 to 1.0.3
+- Include sotp/helpers folder
