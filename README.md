@@ -36,6 +36,7 @@ Next is, adding the installed packages to your project:
 INSTALLED_APPS = [
     ...
     'sotp',    
+    'django_apscheduler',
 ]
 ```
 
