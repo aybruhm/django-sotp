@@ -16,3 +16,10 @@ Change Log
 - Include pyotp to install_requires
 - Bump version from 1.0.2 to 1.0.3
 - Include sotp/helpers folder
+
+1.0.4 (01/10/2022)
+-------------------
+- Implemented unit test
+- Refactored generate sotp method
+- Renamed UserSOTP table name to secured_otps
+- Update documentation
