@@ -136,9 +136,6 @@ MESSAGE_TAGS = {
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# EMAIL Configuration
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 # Format string for displaying run time timestamps in the Django admin site. The default
 # just adds seconds to the standard Django format, which is useful for displaying the timestamps
 # for jobs that are scheduled to run on intervals of less than one minute.
@@ -157,5 +154,3 @@ APSCHEDULER_RUN_NOW_TIMEOUT = 25  # Second
 
 # SOTP configuration    
 SOTP_TIME_EXPIRATION = 5 # in minutes
-
-SOTP_FROM_EMAIL = "from@email.com" 
