@@ -10,7 +10,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
  
 setup(
     name = 'django_sotp',
-    version = '1.0.3',
+    version = '1.0.4',
     packages = find_packages(),
     include_package_data = True,
     license = 'CC0 1.0 Universal (CC0 1.0) Public Domain Dedication',
@@ -25,7 +25,7 @@ setup(
         'passwords' 
     ],
     url = 'https://github.com/israelabraham/django-sopt',
-    author = 'Abram 🐼',
+    author = 'Abram',
     author_email = 'israelvictory87@gmail.com',
     classifiers =[
         'Development Status :: 5 - Production/Stable',
