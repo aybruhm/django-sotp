@@ -1,7 +1,9 @@
+# Django Imports
 from django.shortcuts import redirect, render
 from django.contrib.auth import get_user_model, authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.db.models import Q
 
 # Sotp Imports
 from sotp.models import UserSOTP
@@ -30,11 +32,19 @@ def register_page(request):
             email = request.POST.get("email")
             password = request.POST.get("password")
             
+            # Validation to check if user with the 
+            # same email or username exists``
+            if User.objects.filter(
+                    Q(email__iexact=email) | Q(username__iexact=username)  
+                ).exists():
+                return redirect("example:register-page")
+            
             # Creates user and save to database
             user = User.objects.create(
                 first_name=firstname, last_name=lastname,
-                username=username, email=email, password=password
+                email=email, password=password
             )
+            user.username = username
             user.set_password(password)
             user.save()
             
