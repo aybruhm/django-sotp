@@ -1,8 +1,7 @@
-# Library Imports
+# Native Imports Imports
 import pyotp
 
 # Django Imports
-from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib.auth import get_user_model
 
@@ -35,42 +34,15 @@ class GenerateSOTP:
         }
         
         # Add generated TOTP and OTP to user and save to database
-        user_sotp = UserSOTP.objects.get_or_create(
-            user=get_user_model().objects.get(email=user_email),
-            totp = payload.get("totp"), otp = payload.get("OTP")
+        user_sotp, _ = UserSOTP.objects.get_or_create(
+            user=get_user_model().objects.get(email=user_email)
         )
-        
-        # Send email to user
-        self.send_otp_email(
-            otp_code=user_sotp[0].otp,
-            user_email=user_email
-        )
+        user_sotp.totp = payload.get("totp")
+        user_sotp.otp = payload.get("OTP")
+        user_sotp.save(update_fields=["totp", "otp"])
         
         # Run scheduler to clear user *OTP after interval has elapsed
         run_scheduler(user_email=user_email)
         
         return payload
-   
-   
-    @classmethod
-    def send_otp_email(self, otp_code:int, user_email:str):
-        """
-        > Send an email to the user with the OTP code
-        
-        :param otp_code: The OTP code that was generated for the user
-        :type otp_code: int
-        :param user_email: The email address of the user
-        :type user_email: str
-        :return: True
-        """
-        
-        send_mail(
-            'Confirm OTP',
-            'Use this secured OTP to authenticate your account\nOTP: {}'.format(otp_code),
-            settings.SOTP_FROM_EMAIL,
-            [user_email],
-            fail_silently=False,
-        )
-        
-        return True
     
