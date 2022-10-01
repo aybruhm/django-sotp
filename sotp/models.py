@@ -18,4 +18,4 @@ class UserSOTP(models.Model):
     
     class Meta:
         verbose_name_plural = "User SOTPs"
-        db_table = "user_sotps"
+        db_table = "secured_otps"
