@@ -23,3 +23,7 @@ Change Log
 - Refactored generate sotp method
 - Renamed UserSOTP table name to secured_otps
 - Update documentation
+
+1.0.5 (19/07/2023)
+--------------------
+- Increase totp max length from 18 to 255 
